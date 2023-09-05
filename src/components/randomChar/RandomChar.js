@@ -1,4 +1,5 @@
 import { Component } from "react";
+import Spinner from "../spinner/Spinner";
 import MarvelService from "../../services/MarvelService";
 
 import "./randomChar.scss";
@@ -12,6 +13,7 @@ class RandomChar extends Component {
 
   state = {
     char: {},
+    loading: true,
   };
 
   marvelService = new MarvelService();
@@ -29,7 +31,12 @@ class RandomChar extends Component {
   render() {
     const {
       char: { name, description, thumbnail, homepage, wiki },
+      loading,
     } = this.state;
+
+    if (loading) {
+      return <Spinner />;
+    }
     return (
       <div className="randomchar">
         <div className="randomchar__block">
