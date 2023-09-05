@@ -18,14 +18,14 @@ class RandomChar extends Component {
 
   marvelService = new MarvelService();
 
-  onChatLoaded = (char) => {
-    this.setState({ char });
+  onCharLoaded = (char) => {
+    this.setState({ char, loading: false });
   };
 
   updateChar = () => {
     const id = Math.floor(Math.random() * (1011400 - 1011000) + 1011000);
 
-    this.marvelService.getCharacters(id).then(this.onChatLoaded);
+    this.marvelService.getCharacters(id).then(this.onCharLoaded);
   };
 
   render() {
