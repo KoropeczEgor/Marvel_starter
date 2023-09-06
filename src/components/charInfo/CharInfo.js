@@ -35,7 +35,7 @@ class CharInfo extends Component {
     this.onCharLoading();
 
     this.marvelService
-      .getCharacter(charId)
+      .getCharacters(charId)
       .then(this.onCharLoaded)
       .catch(this.onError);
   };
@@ -55,7 +55,7 @@ class CharInfo extends Component {
   };
 
   render() {
-    const { char, loading, error } = this.props;
+    const { char, loading, error } = this.state;
 
     const skeleton = char || loading || error ? null : <Skeleton />;
     const errorMessage = error ? <ErrorMessage /> : null;
