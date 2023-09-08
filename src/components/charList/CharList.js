@@ -14,11 +14,14 @@ class CharList extends Component {
   marvelService = new MarvelService();
 
   componentDidMount() {
-    this.marvelService
-      .getAllCharacters()
+    this.onRequest();
+  }
+
+  onRequest = (offset) => {
+    this.MarvelService.getAllCharacters(offset)
       .then(this.onCharListLoaded)
       .catch(this.onError);
-  }
+  };
 
   onCharListLoaded = (charList) => {
     this.setState({
